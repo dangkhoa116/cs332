@@ -10,10 +10,6 @@ def generate_train(files, n):
 def generate_test(files, train_files):
     return list(set(files) - set(train_files))
 
-'''def get_trailing_numbers(s):
-    m = re.search(r'\d+$', s)
-    return m.group() 
-'''
 
 def write_file(path, files):
     print("[+]Write ", path)
