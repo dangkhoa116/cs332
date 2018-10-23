@@ -15,7 +15,7 @@ model = Model(inputs=base_model.input, outputs=out)
 
 
 def save_feature(save_path, feature):    
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    os.makedirs(os.path.dirname(save_path), exist_ok=True) #tao thu muc con
 
     print("[+]Save extracted feature to file : ", save_path)
     np.save(save_path, feature)
@@ -26,8 +26,8 @@ def extract_features(src):
             img_path = line[:-1]
             print("[+] Read image  : ", img_path," id : ", i)
             if os.path.isfile(img_path) and img_path.find(".jpg") != -1:            
-                save_path = img_path.replace("images", "features/vgg16_fc2").replace(".jpg", ".npy")            
-                      
+                save_path = img_path.replace("images", "features/vgg16_fc2").replace(".jpg", ".npy")  #chay 2 tap train va test          
+                   
                 img = image.load_img(img_path, target_size=(224, 224))
                 img_data = image.img_to_array(img) 
                 img_data = np.expand_dims(img_data, axis=0) #them  1 dimention
@@ -35,7 +35,7 @@ def extract_features(src):
 
                 print("[+] Extract feature from image : ", img_path)
                 feature = model.predict(img_data)
-
+                #np.save(save_path_test,feature)
                 save_feature(save_path, feature)
             
 
